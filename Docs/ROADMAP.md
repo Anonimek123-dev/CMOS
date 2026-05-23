@@ -24,7 +24,7 @@
 ## pre-alpha 0.0.6
 
 * [ ] PSF 1
-* [ ] EFI
+* [ ] EFI (Experimental)
 
 ---
 
