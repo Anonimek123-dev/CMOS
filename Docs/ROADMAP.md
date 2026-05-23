@@ -30,5 +30,7 @@
 ---
 
 **Author:** CMOS Kernel Team
+
 **Module:** `ROADMAP.md`
+
 **Last Updated:** 22 May 2026
