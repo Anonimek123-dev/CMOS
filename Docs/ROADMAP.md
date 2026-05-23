@@ -21,6 +21,13 @@
 
 ---
 
+## pre-alpha 0.0.6
+
+* [ ] PSF 1
+* [ ] EFI
+
+
+---
 
 **Author:** CMOS Kernel Team
 **Module:** `ROADMAP.md`
