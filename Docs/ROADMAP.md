@@ -31,7 +31,7 @@
 ## pre-alpha 0.0.7
 
 * [ ] String Utils
-
+* [ ] PS/2 keyboard driver update
 ---
 
 **Author:** CMOS Kernel Team
