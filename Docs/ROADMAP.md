@@ -26,6 +26,11 @@
 * [ ] PSF 1
 * [ ] EFI
 
+---
+
+## pre-alpha 0.0.7
+
+* [ ] String Utils
 
 ---
 
