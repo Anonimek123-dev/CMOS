@@ -15,7 +15,9 @@
 ## pre-alpha 0.0.5
 
 * [ ] Physical Memory Manager (PMM)
+* [ ] Virtual Memory Manager (VMM)
 * [ ] Heap allocator (`kmalloc`, `kfree`)
+* [ ] Paging
 
 ---
 
