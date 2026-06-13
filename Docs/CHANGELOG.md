@@ -220,6 +220,7 @@ This is the first major architecture milestone of the project.
 * [ ] set_window_size() function
 * [ ] Other possible issues relating to fonts
 * [ ] String Utils [Part II]
+* [ ] Fix arrows handling (up and down)
 
 ---
 
