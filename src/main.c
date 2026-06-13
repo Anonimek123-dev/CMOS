@@ -1,9 +1,9 @@
 #include "H/Core/kernel/kernel.h"
+#include "H/HAL/IO/stdio.h"
 
 // Start
 void kernel_init() {    
-    print_set_color(YELLOW, BLACK);
-    print_str("CMOS booted successfully!\n");
+    printf_color(YELLOW, BLACK, "CMOS booted successfully!\n");
 }
 
 // Update per frame

@@ -1,6 +1,7 @@
 #include "H/HAL/IO/print.h"
 #include "H/HAL/Drivers/PS2/keyboard.h"
 #include "H/HAL/IO/input.h"
+#include <stdbool.h>
 
 static char buffer[LINE_BUF_SIZE];
 static int line_len = 0;
@@ -14,14 +15,19 @@ static int history_pos = -1;  // Current Position in History
 static int blink_state = 0;   // Blinker State
 static int blink_counter = 0; // "Ticks" counter
 
+static bool line_ready = false;
+static bool input_enabled = false;
+
 static inline void sanit_cursor() {
     if (line_len < 0) line_len = 0;
     if (line_len > LINE_BUF_SIZE - 1) line_len = LINE_BUF_SIZE - 1;
     if (cursor_pos < 0) cursor_pos = 0;
     if (cursor_pos > line_len) cursor_pos = line_len;
 }
+
 void kb_update() {
-    print_set_color(WHITE, BLACK);
+    if (!input_enabled)
+        return;
 
     int ci = kb_getchar();
     if (ci < 0) {
@@ -39,6 +45,7 @@ void kb_update() {
     // ENTER
     if (c == '\n') {
         buffer[line_len] = '\0';
+        line_ready = true;
 
         // Add to history
         if (line_len > 0) {
@@ -60,9 +67,6 @@ void kb_update() {
         col = 0;
         row++;
         start_col = 0;
-        line_len = 0;
-        cursor_pos = 0;
-        buffer[0] = '\0';
         sanit_cursor();
     }
 
@@ -248,4 +252,37 @@ else {
         blink_state = !blink_state;
         draw_cursor(start_col, cursor_pos, row, blink_state);
     }
+}
+
+bool input_ready() {
+    return line_ready;
+}
+
+char* input_getline() {
+    static char line[LINE_BUF_SIZE];
+    for (int i = 0; i <= line_len; i++)
+        line[i] = buffer[i];
+    line_ready = false;
+    line_len = 0;
+    cursor_pos = 0;
+    buffer[0] = '\0';
+    return line;
+}
+
+char* readline() {
+    start_col = col;    
+    input_enable();
+    while (!input_ready()) {
+        kb_update();
+    }
+    input_disable();
+    return input_getline();
+}
+
+void input_enable() {
+    input_enabled = true;
+}
+
+void input_disable() {
+    input_enabled = false;
 }

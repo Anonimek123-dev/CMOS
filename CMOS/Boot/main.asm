@@ -1,10 +1,14 @@
 global start 
+global multiboot_ptr
 extern long_mode_start
 
 section .text
 bits 32
 start:
     mov esp, stack_top
+
+	mov dword [multiboot_ptr], ebx
+	mov dword [multiboot_ptr+4], 0
 
     call check_multiboot
     call check_cpuid
@@ -117,6 +121,9 @@ error:
 	hlt
 
 section .bss
+align 8
+multiboot_ptr:
+    resq 1
 align 4096
 page_table_l4:
 	resb 4096

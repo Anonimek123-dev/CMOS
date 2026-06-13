@@ -3,20 +3,17 @@
 #include "H/HAL/Drivers/PS2/keyboard.h"
 #include "H/Core/arch/x86_64/TIMER/pit.h"
 #include "H/Core/arch/x86_64/TIMER/timer.h"
+#include "H/Core/kernel/exceptions.h"
+#include "H/Core/kernel/panic.h"
 
 // Forward declare PIC send EOI and keyboard handler
 extern void pic_eoi(unsigned char irq);
 extern void kb_irq_handler(void);
 
 // C handler called from assembly with vector in rdi
-void isr_handler(uint64_t vector) {
+void isr_handler(uint64_t vector, uint64_t error_code, interrupt_frame_t* frame) {
     if (vector <= 31) {
-        // CPU exception
-        print_str("Exception vector: ");
-        print_int((int)vector);
-        print_str("\n");
-        // For now: just return (or halt) - in dev you might halt
-        // __asm__ volatile ("cli; hlt");
+        exception_handler(vector, frame, error_code);
         return;
     }
 

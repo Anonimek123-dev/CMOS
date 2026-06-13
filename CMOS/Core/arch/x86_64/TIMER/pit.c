@@ -1,6 +1,6 @@
 #include "H/Core/arch/x86_64/TIMER/pit.h"
 #include "H/Core/arch/x86_64/port.h"
-#include "H/HAL/IO/print.h"
+#include "H/HAL/IO/stdio.h"
 
 #define PIT_CHANNEL0 0x40
 #define PIT_COMMAND  0x43

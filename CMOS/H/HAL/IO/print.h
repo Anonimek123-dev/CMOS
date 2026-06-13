@@ -23,10 +23,11 @@ enum Colors {
 	WHITE = 15,
 };
 
-void print_clear();
+void print_clr();
 void print_char(char symbol);
 void print_str(char* str);
-void print_int(int integer);
+void print_int(int value);
+void print_hex(unsigned long value);
 void print_set_color(uint8_t foreground, uint8_t background);
 void print_newline(void);
 void print_set_cursor(size_t col, size_t row);

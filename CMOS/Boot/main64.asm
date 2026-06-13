@@ -1,4 +1,5 @@
 global long_mode_start:
+extern multiboot_ptr
 extern kernel_main
 
 section .text
@@ -12,5 +13,6 @@ long_mode_start:
     mov fs, ax
     mov gs, ax
 
+    mov rdi, [rel multiboot_ptr]
     call kernel_main
     hlt

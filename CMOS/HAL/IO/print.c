@@ -76,15 +76,17 @@ void print_str(char* str) {
     }
 }
 
-void print_int(int integer) {
-    char buf[12];
-    int i = 0;
-    int neg = 0;
-    if (integer == 0) { print_char('0'); return; }
-    if (integer < 0) { neg = 1; integer = -integer; }
-    while (integer > 0) { buf[i++] = '0' + (integer % 10); integer /= 10; }
-    if (neg) buf[i++] = '-';
-    for (int j = i - 1; j >= 0; j--) print_char(buf[j]);
+void print_int(int value) {
+    char buffer[32];
+    itoa(value, buffer);
+    puts(buffer);
+}
+
+void print_hex(unsigned long value) {
+    printf("0x");
+    char buf[65];
+    utoa_base(value, buf, 16);
+    print_str(buf);
 }
 
 void print_set_color(uint8_t fg, uint8_t bg) {

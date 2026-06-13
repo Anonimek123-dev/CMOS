@@ -110,11 +110,11 @@ static char trans_scancode(uint8_t code) {
     switch (code) {
         case 0x2A: shift_pressed = !released; if (!released) /*kb_put(KEY_LSHIFT);*/ return 0;
         case 0x36: shift_pressed = !released; if (!released) /*kb_put(KEY_RSHIFT);*/ return 0;
-        case 0x1D: ctrl_pressed = !released; if (!released) { /*kb_put(KEY_CTRL);*/ print_str("[Ctrl]"); } return 0;
-        case 0x38: alt_pressed=!released; if(!released){ /*kb_put(KEY_ALT);*/ print_str("[Alt]"); } return 0;
-        case 0x3A: if (!released){ capslock_on=!capslock_on; kb_update_leds(); /*kb_put(KEY_CAPSLOCK);*/} return 0;
-        case 0x45: if (!released){ numlock_on =!numlock_on; kb_update_leds(); /*kb_put(KEY_NUMLOCK);*/} return 0;
-        case 0x46: if (!released){ scrolllock_on=!scrolllock_on; kb_update_leds(); /*kb_put(KEY_SCROLL);*/} return 0;
+        case 0x1D: ctrl_pressed = !released; if (!released) { /*kb_put(KEY_CTRL);*/ } return 0;
+        case 0x38: alt_pressed=!released; if(!released){ /*kb_put(KEY_ALT);*/ } return 0;
+        case 0x3A: if (!released){ capslock_on=!capslock_on; kb_update_leds(); /*kb_put(KEY_CAPSLOCK);*/ } return 0;
+        case 0x45: if (!released){ numlock_on =!numlock_on; kb_update_leds(); /*kb_put(KEY_NUMLOCK);*/ } return 0;
+        case 0x46: if (!released){ scrolllock_on=!scrolllock_on; kb_update_leds(); /*kb_put(KEY_SCROLL);*/ } return 0;
     }
 
     // Handle extended keys
@@ -122,31 +122,31 @@ static char trans_scancode(uint8_t code) {
 
     if (!released) {
         switch (code) {
-            case 0x01: print_str("[Esc]"); return 0;
-            case 0x3B: print_str("[F1]");  return 0;
-            case 0x3C: print_str("[F2]");  return 0;
-            case 0x3D: print_str("[F3]");  return 0;
-            case 0x3E: print_str("[F4]");  return 0;
-            case 0x3F: print_str("[F5]");  return 0;
-            case 0x40: print_str("[F6]");  return 0;
-            case 0x41: print_str("[F7]");  return 0;
-            case 0x42: print_str("[F8]");  return 0;
-            case 0x43: print_str("[F9]");  return 0;
-            case 0x44: print_str("[F10]"); return 0;
-            case 0x57: print_str("[F11]"); return 0;
-            case 0x58: print_str("[F12]"); return 0;
-            case 0x64: print_str("[F13]"); return 0;
-            case 0x65: print_str("[F14]"); return 0;
-            case 0x66: print_str("[F15]"); return 0;
-            case 0x67: print_str("[F16]"); return 0;
-            case 0x68: print_str("[F17]"); return 0;
-            case 0x69: print_str("[F18]"); return 0;
-            case 0x6A: print_str("[F19]"); return 0;
-            case 0x6B: print_str("[F20]"); return 0;
-            case 0x6C: print_str("[F21]"); return 0;
-            case 0x6D: print_str("[F22]"); return 0;
-            case 0x6E: print_str("[F23]"); return 0;
-            case 0x6F: print_str("[F24]"); return 0;
+            case 0x01: kb_put(KEY_ESC); return 0;
+            case 0x3B: kb_put(KEY_F1);  return 0;
+            case 0x3C: kb_put(KEY_F2);  return 0;
+            case 0x3D: kb_put(KEY_F3);  return 0;
+            case 0x3E: kb_put(KEY_F4);  return 0;
+            case 0x3F: kb_put(KEY_F5);  return 0;
+            case 0x40: kb_put(KEY_F6);  return 0;
+            case 0x41: kb_put(KEY_F7);  return 0;
+            case 0x42: kb_put(KEY_F8);  return 0;
+            case 0x43: kb_put(KEY_F9);  return 0;
+            case 0x44: kb_put(KEY_F10); return 0;
+            case 0x57: kb_put(KEY_F11); return 0;
+            case 0x58: kb_put(KEY_F12); return 0;
+            case 0x64: kb_put(KEY_F13); return 0;
+            case 0x65: kb_put(KEY_F14); return 0;
+            case 0x66: kb_put(KEY_F15); return 0;
+            case 0x67: kb_put(KEY_F16); return 0;
+            case 0x68: kb_put(KEY_F17); return 0;
+            case 0x69: kb_put(KEY_F18); return 0;
+            case 0x6A: kb_put(KEY_F19); return 0;
+            case 0x6B: kb_put(KEY_F20); return 0;
+            case 0x6C: kb_put(KEY_F21); return 0;
+            case 0x6D: kb_put(KEY_F22); return 0;
+            case 0x6E: kb_put(KEY_F23); return 0;
+            case 0x6F: kb_put(KEY_F24); return 0;
         }
     }
 
@@ -156,7 +156,7 @@ static char trans_scancode(uint8_t code) {
     switch (code) {
         case 0x47: if (numlock_on) return '7'; else kb_put(KEY_HOME); return 0;
         case 0x48: if (numlock_on) return '8'; else kb_put(KEY_UP);   return 0;
-        case 0x49: if (numlock_on) return '9'; else print_str("[PageUp]"); return 0;
+        case 0x49: if (numlock_on) return '9'; else kb_put(KEY_PGUP); return 0;
         case 0x4A: if (numlock_on) return '-'; else kb_put(KEY_KP_MINUS); return 0;        
         case 0x4B: if (numlock_on) return '4'; else kb_put(KEY_LEFT); return 0;
         case 0x4C: if (numlock_on) return '5'; else print_char(' ');  return 0;
@@ -164,7 +164,7 @@ static char trans_scancode(uint8_t code) {
         case 0x4E: if (numlock_on) return '+'; else kb_put(KEY_KP_PLUS);  return 0;
         case 0x4F: if (numlock_on) return '1'; else kb_put(KEY_END);  return 0;
         case 0x50: if (numlock_on) return '2'; else kb_put(KEY_DOWN); return 0;
-        case 0x51: if (numlock_on) return '3'; else print_str("[PageDown]"); return 0;
+        case 0x51: if (numlock_on) return '3'; else kb_put(KEY_PGDN); return 0;
         case 0x52: if (numlock_on) return '0'; else kb_put(KEY_INSERT); return 0;
         case 0x53: if (numlock_on) return '.'; else kb_put(KEY_DELETE); return 0;
         case 0x37: if (numlock_on) return '*'; else kb_put(KEY_KP_MUL); return 0;
@@ -182,21 +182,21 @@ static void handle_ex(uint8_t code, bool released) {
     if (released) return;  // Only handle key press
     switch (code) {
         case 0x1C: kb_put('\n'); break;
-        case 0x1D: ctrl_pressed = !released; if (!released) { /*kb_put(KEY_CTRL);*/ print_str("[Ctrl]"); } break;
+        case 0x1D: ctrl_pressed = !released; if (!released) { kb_put(KEY_CTRL); } break;
         case 0x35: kb_put('/'); break;
-        case 0x38: alt_pressed= !released; if (!released) { /*kb_put(KEY_ALT);*/ print_str("[Alt]"); } break; 
+        case 0x38: alt_pressed= !released; if (!released) { kb_put(KEY_ALT); } break; 
         case 0x47: kb_put(KEY_HOME); break;
         case 0x48: kb_put(KEY_UP); break;
-        case 0x49: /*kb_put(KEY_PGUP);*/ print_str("[PageUp]"); break; 
+        case 0x49: kb_put(KEY_PGUP); break; 
         case 0x4B: kb_put(KEY_LEFT); break;
         case 0x4D: kb_put(KEY_RIGHT); break;
         case 0x4F: kb_put(KEY_END); break;
         case 0x50: kb_put(KEY_DOWN); break;
-        case 0x51: /*kb_put(KEY_PGDN);*/ print_str("[PageDown]"); break; 
-        case 0x52: /*kb_put(KEY_INSERT);*/ print_str("[Insert]"); break; 
+        case 0x51: kb_put(KEY_PGDN); break; 
+        case 0x52: kb_put(KEY_INSERT); break; 
         case 0x53: kb_put(KEY_DELETE); break;
-        case 0x5B: /*kb_put(KEY_LWIN);*/ print_str("[Left Windows]"); break;  
-        case 0x5C: /*kb_put(KEY_RWIN);*/ print_str("[Right Windows]"); break; 
+        case 0x5B: kb_put(KEY_LWIN); break;  
+        case 0x5C: kb_put(KEY_RWIN); break; 
         case 0x5D: kb_put(KEY_MENU); break;
         case 0x20: kb_put(KEY_MUTE); break;
         case 0x30: kb_put(KEY_VOLUP); break;

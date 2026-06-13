@@ -6,7 +6,7 @@
 **(CMOS)**
 
 ## Version
-**CMOS pre-alpha 0.0.3**
+**CMOS pre-alpha 0.0.5**
 
 ## Prerequisites
  

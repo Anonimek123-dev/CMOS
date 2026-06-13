@@ -4,38 +4,28 @@
 
 # NEXT UPDATES
 
-## pre-alpha 0.0.4
-
-* [ ] Kernel panic screen
-* [ ] Input system
-* [ ] Improving I/O system
-
----
-
-## pre-alpha 0.0.5
-
-* [ ] Physical Memory Manager (PMM)
-* [ ] Virtual Memory Manager (VMM)
-* [ ] Heap allocator (`kmalloc`, `kfree`)
-* [ ] Paging
-
----
-
-## pre-alpha 0.0.6
-
-* [ ] PSF 1
-* [ ] EFI (Experimental)
-
----
-
 ## pre-alpha 0.0.7
 
-* [ ] String Utils
+* [ ] COM1 Driver
+* [ ] EFI (Experimental)
 * [ ] PS/2 keyboard driver update
+* [ ] New structure of Makefiles
 ---
 
-**Author:** CMOS Kernel Team
+## pre-alpha 0.0.8
 
+* [ ] Limine Support (Experimental)
+* [ ] ACPI Tables
+* [ ] APIC
+* [ ] HPET
+* [ ] RTC
+---
+
+## pre-alpha 0.0.9
+* [ ] PSF2
+* [ ] Framebuffer etc.
+---
+
+**Author:** CMOS Team
 **Module:** `ROADMAP.md`
-
-**Last Updated:** 22 May 2026
+**Last Updated:** 13 June 2026
