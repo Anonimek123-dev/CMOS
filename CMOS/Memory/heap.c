@@ -114,14 +114,14 @@ void heap_info(void)
     print_int((heap_total - heap_used) / 1024);
     printf(" KB\n");
 
-    printf("Heap State: ");
-    printf("\nBlocks:\n");
+    printf("Heap Blocks: \n");
 
     heap_block_t* current = heap_head;
     int id = 0;
 
     while(current)
     {
+        print_set_color(LIGHT_CYAN, BLACK);
         printf("[");
         print_int(id);
         printf("] ");
@@ -131,6 +131,7 @@ void heap_info(void)
         else
             printf_color(LIGHT_RED, BLACK, "USED ");
 
+        print_set_color(WHITE, BLACK);
         printf("Size: ");
         print_int(current->size);
         printf(" bytes\n");
